@@ -4,6 +4,7 @@
     padding: 0;
     box-sizing: border-box;
 }
+
 .register-container {
     display: flex;
     justify-content: center;
@@ -44,21 +45,6 @@ h2 {
     outline: none;
 }
 
-.btn {
-    width: 100%;
-    padding: 15px;
-    background-color: #008cba;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
-    cursor: pointer;
-}
-
-.btn:hover {
-    background-color: #45a049;
-}
-
 .footer-links {
     margin-top: 15px;
     font-size: 14px;
@@ -66,7 +52,6 @@ h2 {
 
 .footer-links a {
     color: #333;
-    text-decoration: none;
 }
 
 .footer-links a:hover {

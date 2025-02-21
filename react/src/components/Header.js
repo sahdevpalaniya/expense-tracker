@@ -1,43 +1,40 @@
-import React, { useState } from 'react';
-import { Link, useLocation, useParams } from "react-router-dom";
+import React, { useState, useEffect } from 'react';
+import { Link, useLocation } from "react-router-dom";
 import './css/header.css';
-import axios from 'axios';
 
 const Header = () => {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
-    const [user, setUser] = useState([]);
+    const [user, setUser] = useState(null); // Initialize as null, as it might not exist yet.
     const [showMenu, setShowMenu] = useState(false);
     const location = useLocation();
-    const formData = {
-        username:'',
-        password:'',
-    }
-    const handleLoginClick = () => {
-        axios.post(`${process.env.APP_URL}/login`,loginData)
-            .then(response => {
-                setUser(response.data);
-                setIsLoggedIn(true);
-            })
-            .catch(err => {
-                setError(err);
-                setLoading(false);
-            });
-    };
+
+    // Check if the user is logged in
+    useEffect(() => {
+        if (localStorage.getItem('token') !== undefined) {
+            setIsLoggedIn(true);
+        }
+
+        // Get the user from localStorage and parse it if it exists
+        const userData = localStorage.getItem('user');
+        if (userData) {
+            setUser(JSON.parse(userData)); // Parse the user object
+        }
+    }, []);
 
     const handleProfileClick = () => {
         setShowMenu(!showMenu);
     };
-
+    console.log(isLoggedIn)
     return (
         <div className="app">
             <header className="header">
                 <div className="app-name">MyApp</div>
 
-                <div className="user-profile" onClick={isLoggedIn ? handleProfileClick : handleLoginClick}>
-                    {isLoggedIn ? (
+                <div className="user-profile">
+                    {!isLoggedIn ? (
                         <div className="profile">
                             <div className="profile-pic">
-                                {user.name[0]}
+                                {user?.name ? user.name[0] : 'U'}
                             </div>
                             {showMenu && (
                                 <div className="dropdown-menu">

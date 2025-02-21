@@ -1,19 +1,27 @@
 // src/components/Login.js
 import React, { useState } from 'react';
 import './css/login.css';
+import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 const Login = () => {
   // State hooks to manage form values
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [user, setUser] = useState([]);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [rememberMe, setRememberMe] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle login logic (e.g., API call)
-    console.log('Username:', username);
-    console.log('Password:', password);
-    console.log('Remember Me:', rememberMe);
+    axios.post(`${process.env.APP_URL}/login`)
+      .then(response => {
+        setUser(response.data);
+        setIsLoggedIn(true);
+      })
+      .catch(err => {
+
+      });
   };
 
   return (
@@ -51,7 +59,7 @@ const Login = () => {
           <button type="submit" className="btn">Login</button>
         </form>
         <div className="footer-links">
-          <a href="#">Forgot Password?</a> | <a href="#">Sign Up</a>
+          <a href="#">Forgot Password?</a> |<Link to={'/register'} className=""> Sign Up </Link>
         </div>
       </div>
     </div>

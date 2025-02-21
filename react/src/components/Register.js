@@ -1,6 +1,7 @@
 // src/components/Register.js
 import React, { useState } from 'react';
 import './css/register.css';
+import { Link } from 'react-router-dom';
 
 const Register = () => {
     // State hooks to manage form values
@@ -74,7 +75,7 @@ const Register = () => {
                     <button type="submit" className="btn">Register</button>
                 </form>
                 <div className="footer-links">
-                    <a href="#">Already have an account? Login</a>
+                    <Link to={'/'} className="login-btn">Already have an account? Login</Link>
                 </div>
             </div>
         </div>
