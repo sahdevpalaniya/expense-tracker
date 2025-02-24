@@ -1,25 +1,43 @@
 // src/components/Register.js
 import React, { useState } from 'react';
+import axios from 'axios';
 import './css/register.css';
-import { Link } from 'react-router-dom';
+import { handleError } from '../helpers/Response';
+import { useAlert } from './context/AlertContext';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Register = () => {
-    // State hooks to manage form values
-    const [firstName, setFirstName] = useState('');
-    const [lastName, setLastName] = useState('');
-    const [email, setEmail] = useState('');
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
-    const [confirmPassword, setConfirmPassword] = useState('');
+    const navigate = useNavigate();
+    const { showAlert } = useAlert();
+
+    const [registerFormData, setRegisterFormData] = useState({
+        name: '',
+        email: '',
+        username: '',
+        password: '',
+    });
+    const [errors, setErrors] = useState({});
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        // Handle registration logic (e.g., API call)
-        console.log('First Name:', firstName);
-        console.log('Last Name:', lastName);
-        console.log('Email:', email);
-        console.log('Username:', username);
-        console.log('Password:', password);
+        axios.post(`${process.env.REACT_APP_APP_URL}/register`, registerFormData)
+            .then(response => {
+                showAlert(response.data?.message, response.data?.status === false ? 'error' : 'success' || "error");
+                setRegisterFormData({
+                    name: '',
+                    email: '',
+                    username: '',
+                    password: '',
+                });
+                navigate('/');
+            })
+            .catch(async err => {
+                if (err.response && err.response.data.status === "error") {
+                    setErrors(await handleError(err));
+                } else {
+                    showAlert(err.response?.data?.message, err.response?.data?.status === false ? 'error' : 'success' || "error");
+                }
+            });
     };
 
     return (
@@ -30,47 +48,46 @@ const Register = () => {
                     <div className="textbox">
                         <input
                             type="text"
-                            placeholder="First Name"
-                            value={firstName}
-                            onChange={(e) => setFirstName(e.target.value)}
+                            placeholder="Name"
+                            value={registerFormData.name}
+                            onChange={(e) => setRegisterFormData({ ...registerFormData, name: e.target.value })}
                             required
                         />
-                    </div>
-                    <div className="textbox">
-                        <input
-                            type="text"
-                            placeholder="Last Name"
-                            value={lastName}
-                            onChange={(e) => setLastName(e.target.value)}
-                            required
-                        />
+                        {errors.name && <p className="error-message">{errors.name}</p>}
+
                     </div>
                     <div className="textbox">
                         <input
                             type="email"
                             placeholder="Email"
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
+                            value={registerFormData.email}
+                            onChange={(e) => setRegisterFormData({ ...registerFormData, email: e.target.value })}
                             required
                         />
+                        {errors.email && <p className="error-message">{errors.email}</p>}
+
                     </div>
                     <div className="textbox">
                         <input
                             type="text"
                             placeholder="Username"
-                            value={username}
-                            onChange={(e) => setUsername(e.target.value)}
+                            value={registerFormData.username}
+                            onChange={(e) => setRegisterFormData({ ...registerFormData, username: e.target.value })}
                             required
                         />
+                        {errors.username && <p className="error-message">{errors.username}</p>}
+
                     </div>
                     <div className="textbox">
                         <input
                             type="password"
                             placeholder="Password"
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
+                            value={registerFormData.password}
+                            onChange={(e) => setRegisterFormData({ ...registerFormData, password: e.target.value })}
                             required
                         />
+                        {errors.password && <p className="error-message">{errors.password}</p>}
+
                     </div>
                     <button type="submit" className="btn">Register</button>
                 </form>

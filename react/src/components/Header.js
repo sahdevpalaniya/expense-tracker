@@ -1,38 +1,55 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import './css/header.css';
-
+import axios from 'axios';
+import { useAlert } from './context/AlertContext';
 const Header = () => {
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
-    const [user, setUser] = useState(null); // Initialize as null, as it might not exist yet.
-    const [showMenu, setShowMenu] = useState(false);
+    const navigate = useNavigate();
     const location = useLocation();
+    const { showAlert } = useAlert();
 
-    // Check if the user is logged in
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [user, setUser] = useState({});
+    const [showMenu, setShowMenu] = useState(false);
+
     useEffect(() => {
-        if (localStorage.getItem('token') !== undefined) {
+        const token = localStorage.getItem('access_token');
+        setUser({
+            name: localStorage.getItem('name'),
+            user_id: localStorage.getItem('user_id'),
+            token: localStorage.getItem('access_token'),
+        });
+        if (token) {
             setIsLoggedIn(true);
-        }
-
-        // Get the user from localStorage and parse it if it exists
-        const userData = localStorage.getItem('user');
-        if (userData) {
-            setUser(JSON.parse(userData)); // Parse the user object
+        } else {
+            setIsLoggedIn(false);
         }
     }, []);
+    axios.defaults.headers.common['Authorization'] = user?.token;
 
     const handleProfileClick = () => {
         setShowMenu(!showMenu);
     };
-    console.log(isLoggedIn)
+
+    const handleLogout = () => {
+        axios.post(`${process.env.REACT_APP_APP_URL}/logout`).then((response) => {
+            localStorage.clear();
+            setIsLoggedIn(false);
+            showAlert(response.data?.message, response.data?.status == false ? 'error' : 'success' || "error");
+        }).catch(async err => {
+            showAlert(err.response?.data?.message, err.response?.data?.status == false ? 'error' : 'success' || "error");
+        });
+        navigate('/');
+    };
+
     return (
         <div className="app">
             <header className="header">
                 <div className="app-name">MyApp</div>
 
                 <div className="user-profile">
-                    {!isLoggedIn ? (
-                        <div className="profile">
+                    {isLoggedIn ? (
+                        <div className="profile" onClick={handleProfileClick}>
                             <div className="profile-pic">
                                 {user?.name ? user.name[0] : 'U'}
                             </div>
@@ -41,7 +58,7 @@ const Header = () => {
                                     <ul>
                                         <li>Profile</li>
                                         <li>Settings</li>
-                                        <li>Logout</li>
+                                        <li onClick={handleLogout}>Logout</li>
                                     </ul>
                                 </div>
                             )}
