@@ -31,15 +31,18 @@ const Header = () => {
         setShowMenu(!showMenu);
     };
 
-    const handleLogout = () => {
-        axios.post(`${process.env.REACT_APP_APP_URL}/logout`).then((response) => {
+    const handleLogout = async () => {
+        await axios.post(`${process.env.REACT_APP_APP_URL}/logout`).then(async (response) => {
             localStorage.clear();
             setIsLoggedIn(false);
             showAlert(response.data?.message, response.data?.status == false ? 'error' : 'success' || "error");
         }).catch(async err => {
             showAlert(err.response?.data?.message, err.response?.data?.status == false ? 'error' : 'success' || "error");
         });
-        navigate('/');
+        setTimeout(() => {
+            navigate('/');
+            window.location.reload();
+        }, 1000);
     };
 
     return (

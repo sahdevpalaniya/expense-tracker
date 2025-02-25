@@ -46,54 +46,58 @@ const ExpenseTracker = () => {
     };
 
     return (
-        <div className="expense-container">
-            <div className="expense-box">
-                {/* <h2 className="transaction-title">Transaction Only</h2> */}
-                <div className="filter-box">
-                    <ul className="filter-list">
-                        {['All', 'Daily', 'Monthly', 'Yearly'].map((filter) => (
-                            <li
-                                key={filter}
-                                className={selectedFilter === filter ? 'selected' : ''}
-                                onClick={() => handleFilterClick(filter)}
-                            >
-                                {filter}
-                            </li>
-                        ))}
-                    </ul>
-                </div>
-                <div>
-                    <div className="expense-list">
-                        {expenses.map((expense, index) => (
-                            <div key={expense.id} className="expense-item grid" onClick={() => navigate(`/add-expense?id=${expense.id}&type=${expense.type}`)}>
-                                <span className="description">{index + 1}. {expense.description} ({expense.category})</span>
-                                <span className={expense.type === 1 ? 'amount expense' : 'amount income'}>
-                                    ₹{expense.amount}
-                                </span>
+        <>
+            <div className="advertisement-banner">
+                <p>Exclusive Offer! Get 20% off your next purchase.</p>
+            </div>
+            <div className="expense-container">
+                <div className="expense-box">
+                    <div className="filter-box">
+                        <ul className="filter-list">
+                            {['All', 'Daily', 'Monthly', 'Yearly'].map((filter) => (
+                                <li
+                                    key={filter}
+                                    className={selectedFilter === filter ? 'selected' : ''}
+                                    onClick={() => handleFilterClick(filter)}
+                                >
+                                    {filter}
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                    <div>
+                        <div className="expense-list">
+                            {expenses.map((expense, index) => (
+                                <div key={expense.id} className="expense-item grid" onClick={() => navigate(`/add-expense?id=${expense.id}&type=${expense.type}`)}>
+                                    <span className="description">{index + 1}. {expense.description} ({expense.category})</span>
+                                    <span className={expense.type === 1 ? 'amount expense' : 'amount income'}>
+                                        ₹{expense.amount}
+                                    </span>
+                                </div>
+                            ))}
+                        </div>
+                        <div className='amount-details'>
+                            <div className="totalIncome">
+                                <p>Income</p>
+                                <span className="amount income">₹{totalIncome}</span>
                             </div>
-                        ))}
-                    </div>
-                    <div className='amount-details'>
-                        <div className="totalIncome">
-                            <p>Income</p>
-                            <span className="amount income">₹{totalIncome}</span>
+                            <div className="totalExpense">
+                                <p>Expense</p>
+                                <span className="amount expense">₹{totalExpense}</span>
+                            </div>
+                            <div className="totalRemaining">
+                                <p>Remaining</p>
+                                <span className="amount remaining">₹{remaining}</span>
+                            </div>
                         </div>
-                        <div className="totalExpense">
-                            <p>Expense</p>
-                            <span className="amount expense">₹{totalExpense}</span>
+                        <div className="button-container">
+                            <button className="cash-button cash-in" onClick={handleCashInClick}>Cash In</button>
+                            <button className="cash-button cash-out" onClick={handleCashOutClick}>Cash Out</button>
                         </div>
-                        <div className="totalRemaining">
-                            <p>Remaining</p>
-                            <span className="amount remaining">₹{remaining}</span>
-                        </div>
-                    </div>
-                    <div className="button-container">
-                        <button className="cash-button cash-in" onClick={handleCashInClick}>Cash In</button>
-                        <button className="cash-button cash-out" onClick={handleCashOutClick}>Cash Out</button>
                     </div>
                 </div>
             </div>
-        </div>
+        </>
     );
 };
 

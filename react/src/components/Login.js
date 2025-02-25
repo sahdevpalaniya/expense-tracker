@@ -16,11 +16,11 @@ const Login = () => {
   const [errors, setErrors] = useState({});
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setErrors({});
 
-    axios.post(`${process.env.REACT_APP_APP_URL}/login`, loginFormData)
+    await axios.post(`${process.env.REACT_APP_APP_URL}/login`, loginFormData)
       .then(response => {
         const accessToken = response.data.data.access_token;
         const userId = response.data.data.user._id;
@@ -28,12 +28,16 @@ const Login = () => {
         localStorage.setItem('access_token', accessToken);
         localStorage.setItem('user_id', userId);
         localStorage.setItem('name', username);
-        showAlert(response.data?.message, response.data?.status === false ? 'error' : 'success' || "error");
         setLoginFormData({
           username: '',
           password: ''
         });
+        showAlert(response.data?.message, response.data?.status === false ? 'error' : 'success' || "error");
         setIsLoggedIn(true);
+        setTimeout(() => {
+          navigate('/expense');
+          window.location.reload();
+        }, 1000);
       })
       .catch(async err => {
         if (err.response && err.response.data.status === "error") {
@@ -43,13 +47,6 @@ const Login = () => {
         }
       });
   };
-
-  useEffect(() => {
-    if (isLoggedIn) {
-      navigate('/expense');
-    }
-  }, [isLoggedIn, navigate]);
-
   return (
     <div className="login-container">
       <div className="login-box">

@@ -19,7 +19,7 @@ const App = () => {
         <Alert />
         <Header />
         <Routes>
-          <Route path="/" element={isAuthenticated ? <Navigate to="/expense" /> : <Login />} />
+          <Route path="/" index element={isAuthenticated ? <Navigate to="/expense" /> : <Login />} />
           <Route path="/register" element={isAuthenticated ? <Navigate to="/expense" /> : <Register />} />
           <Route path="/expense" element={isAuthenticated ? <ExpenseTracker /> : <Navigate to="/" />} />
           <Route path="/add-expense" element={isAuthenticated ? <AddExpense /> : <Navigate to="/" />} />
