@@ -7,11 +7,11 @@ const Header = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const { showAlert } = useAlert();
-
+    
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [user, setUser] = useState({});
     const [showMenu, setShowMenu] = useState(false);
-
+    
     useEffect(() => {
         const token = localStorage.getItem('access_token');
         setUser({
@@ -25,12 +25,13 @@ const Header = () => {
             setIsLoggedIn(false);
         }
     }, []);
+    
+    
     axios.defaults.headers.common['Authorization'] = user?.token;
-
     const handleProfileClick = () => {
         setShowMenu(!showMenu);
     };
-
+    
     const handleLogout = async () => {
         await axios.post(`${process.env.REACT_APP_APP_URL}/logout`).then(async (response) => {
             localStorage.clear();

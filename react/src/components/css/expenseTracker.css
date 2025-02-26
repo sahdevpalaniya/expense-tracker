@@ -14,7 +14,7 @@
 
 .expense-box {
   background-color: #fff;
-  padding: 30px;
+  padding: 5px;
   border-radius: 8px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
   width: 100%;
@@ -30,6 +30,7 @@
 .income {
   color: green;
 }
+
 .filter-box {
   display: flex;
   justify-content: space-around;
@@ -128,6 +129,7 @@
   text-align: left;
   flex: 1;
   font-size: 14px;
+  word-wrap: break-word;
 }
 
 .amount {
@@ -147,6 +149,7 @@
 .income {
   color: green;
 }
+
 .button-container {
   display: flex;
   justify-content: space-between;
