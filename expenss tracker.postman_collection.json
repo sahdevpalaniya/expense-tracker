@@ -1,0 +1,529 @@
+{
+	"info": {
+		"_postman_id": "da0d7d6e-7c14-4331-807e-5943c923d269",
+		"name": "expenss tracker",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "38742883"
+	},
+	"item": [
+		{
+			"name": "api",
+			"item": [
+				{
+					"name": "users",
+					"item": [
+						{
+							"name": "Create User",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"sahdev\",\r\n    \"email\": \"sahdev.p@azine.in\",\r\n    \"username\":\"sahdev\",\r\n    \"password\":\"123456\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{app_url}}/user",
+									"host": [
+										"{{app_url}}"
+									],
+									"path": [
+										"user"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "List User",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{app_url}}/user",
+									"host": [
+										"{{app_url}}"
+									],
+									"path": [
+										"user"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get User",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{app_url}}/user/67b57ac7b8500df8a370ce3f",
+									"host": [
+										"{{app_url}}"
+									],
+									"path": [
+										"user",
+										"67b57ac7b8500df8a370ce3f"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update User",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{TOKEN}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"first_name\": \"sahdev2\",\r\n    \"last_name\": \"palaniya\",\r\n    \"username\": \"sahdev\",\r\n    \"password\": \"123456\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{app_url}}/user/67b57ac7b8500df8a370ce3f",
+									"host": [
+										"{{app_url}}"
+									],
+									"path": [
+										"user",
+										"67b57ac7b8500df8a370ce3f"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete User",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{app_url}}/user/:id",
+									"host": [
+										"{{app_url}}"
+									],
+									"path": [
+										"user",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": ""
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Auth",
+					"item": [
+						{
+							"name": "Login",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);\r",
+											"var token = jsonData.data?.access_token;\r",
+											"pm.environment.set(\"token\",token);"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\": \"sahdev\",\r\n    \"password\": \"123456\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{app_url}}/login",
+									"host": [
+										"{{app_url}}"
+									],
+									"path": [
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Register",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"sahdev\",\r\n    \"email\": \"sahdev.p@azine.in\",\r\n    \"username\":\"sahdev\",\r\n    \"password\":\"123456\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{app_url}}/register",
+									"host": [
+										"{{app_url}}"
+									],
+									"path": [
+										"register"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Logout",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{app_url}}/logout",
+									"host": [
+										"{{app_url}}"
+									],
+									"path": [
+										"logout"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Change password",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\":\"sahdev\",\r\n    \"passowrd\":\"123456\",\r\n    \"newPassword\":\"456789\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{app_url}}/change-password",
+									"host": [
+										"{{app_url}}"
+									],
+									"path": [
+										"change-password"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "expese",
+					"item": [
+						{
+							"name": "Create Expense",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"user_id\": \"\",\r\n    \"type\": \"0\",\r\n    \"amount\": \"23\",\r\n    \"category\": \"Enim esse reprehend\",\r\n    \"expense_date\": \"1980-12-24\",\r\n    \"description\": \"Laboriosam magni eo\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{app_url}}/expense",
+									"host": [
+										"{{app_url}}"
+									],
+									"path": [
+										"expense"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "List Expense",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{app_url}}/expense?type=Monthly",
+									"host": [
+										"{{app_url}}"
+									],
+									"path": [
+										"expense"
+									],
+									"query": [
+										{
+											"key": "type",
+											"value": "Monthly"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Expense",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{app_url}}/expense/67bc070a0fd55df0ccb43e95",
+									"host": [
+										"{{app_url}}"
+									],
+									"path": [
+										"expense",
+										"67bc070a0fd55df0ccb43e95"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Expense",
+							"request": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"user_id\": \"67b57ac7b8500df8a370ce3f\",\r\n    \"type\": \"0\",\r\n    \"amount\": 2100,\r\n    \"category\": \"food\",\r\n    \"expense_date\": \"2020-01-20\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{app_url}}/expense/67bc07f24a37b59006df947e",
+									"host": [
+										"{{app_url}}"
+									],
+									"path": [
+										"expense",
+										"67bc07f24a37b59006df947e"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Expense",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{app_url}}/expense/67bc07f24a37b59006df947e",
+									"host": [
+										"{{app_url}}"
+									],
+									"path": [
+										"expense",
+										"67bc07f24a37b59006df947e"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "app_url",
+			"value": "http://localhost:8000/api",
+			"type": "string"
+		},
+		{
+			"key": "token",
+			"value": "9535b6353f3323b08a87b58230b520edfc137c64bf6d6068733b946223aa1ed67a3376b5c73f4cafddefdf96621c8e02294ea29b8e0336046b28220bf3c30fac1c5b7d015a5f352f18172a01c0705a964daa7268c8029af998a99ac50b54db10cedd63007f81ff3f70fd6c4f1d50636dfd32e2d5d7393afc872206de903b68ff9206ac4e12a7b0b1c73737b6790093a8f434c737c4eb7262a19f208d79688b0f0e214970372721fd57644a0dee34c65f35d610472ad3609e795ae7188c0f7d1a28ef241ad7c7b359bdf3bb433cff0b4b48280742481508ecc1524775dbf980cb7f3b6ab8d67e7e901c156b2a2c7fc980ac88b8efa9aa80e805ecaa",
+			"type": "string"
+		}
+	]
+}

@@ -1,0 +1,128 @@
+/* src/components/css/addExpense.css */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.add-expense-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  background-color: #f8f9fa;
+}
+
+.add-expense-box {
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+h2 {
+  color: #333;
+  font-size: 24px;
+  text-align: left;
+}
+
+.filter-type {
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 20px;
+}
+
+.filter-type label {
+  margin-right: 15px;
+}
+
+.textbox {
+  margin-bottom: 20px;
+}
+
+.textbox input {
+  width: 100%;
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  color: #333;
+  transition: border-color 0.3s;
+}
+
+.textbox input:focus {
+  border-color: #008cba;
+  outline: none;
+}
+
+.button-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.btn {
+  text-decoration: none;
+  width: 100%;
+  padding: 15px;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.btn.submit {
+  background-color: #28a745;
+}
+
+.btn.delete {
+  background-color: #dc3545;
+}
+
+.btn.edit {
+  background-color: #ffc107;
+}
+
+.btn:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+}
+
+@media (max-width: 600px) {
+  .add-expense-box {
+    padding: 20px;
+    width: 100%;
+  }
+
+  .btn {
+    font-size: 14px;
+  }
+}
+
+.badge {
+  padding: 10px 20px;
+  border-radius: 20px;
+  color: #fff;
+  margin-right: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.badge.cash-in {
+  background-color: #28a745;
+}
+
+.badge.cash-out {
+  background-color: #dc3545;
+}
+
+.badge.active {
+  opacity: 0.8;
+  transform: scale(1.05);
+}
