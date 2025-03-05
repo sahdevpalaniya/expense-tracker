@@ -5,9 +5,15 @@ const cors = require('cors');
 const session = require('express-session')
 const routes = require('./routes/index.routes');
 const { connectDB } = require('./config/db.config');
+const { seedData } = require("./seed/index");
 
 connectDB().then(() => {
     console.log('MongoDB Connection Successfully');
+
+    seedData()
+    .then(() => console.log('Seed successfully'))
+    .catch((err) => console.error('Error inserting data:', err));
+    
 }).catch((error) => {
     console.log('Connect DB Error', error);
 });

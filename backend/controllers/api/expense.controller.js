@@ -28,26 +28,31 @@ const getAllExpense = (req, res) => {
         const { type } = req.query;
         let filters = {};
 
-        const today = new Date();
-        const startOfDay = new Date(today.setHours(0, 0, 0, 0));
-        const startOfMonth = new Date(today.setMonth(today.getMonth(), 1));
-        const startOfYear = new Date(today.setMonth(0, 1));
-
         if (type) {
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);  // Set to start of day
+
             switch (type.toLowerCase()) {
                 case 'daily':
-                    filters.expense_date = { $gte: startOfDay, $lt: new Date(startOfDay.getTime() + 86400000) }; // End of the day
+                    const tomorrow = new Date(today);
+                    tomorrow.setDate(tomorrow.getDate() + 1);
+                    filters.expense_date = { $gte: today, $lt: tomorrow };
                     break;
                 case 'monthly':
-                    filters.expense_date = { $gte: startOfMonth, $lt: new Date(startOfMonth.setMonth(startOfMonth.getMonth() + 1)) }; // Next month
+                    const startOfMonth = new Date(today.getFullYear(), today.getMonth(), 1);
+                    const startOfNextMonth = new Date(today.getFullYear(), today.getMonth() + 1, 1);
+                    filters.expense_date = { $gte: startOfMonth, $lt: startOfNextMonth };
                     break;
                 case 'yearly':
-                    filters.expense_date = { $gte: startOfYear, $lt: new Date(startOfYear.setFullYear(startOfYear.getFullYear() + 1)) }; // Next year
+                    const startOfYear = new Date(today.getFullYear(), 0, 1);
+                    const startOfNextYear = new Date(today.getFullYear() + 1, 0, 1);
+                    filters.expense_date = { $gte: startOfYear, $lt: startOfNextYear };
                     break;
                 default:
                     break;
             }
         }
+
         Expense.getAllExpense(req.user._id, filters)
             .then((result) => {
                 return resp(res, StatusCodes.OK, 'Expenses retrieved successfully.', true, result);

@@ -1,0 +1,323 @@
+[
+    {
+        "name": "Home Expense"
+    },
+    {
+        "name": "Food & Dining"
+    },
+    {
+        "name": "Transportation"
+    },
+    {
+        "name": "Utilities"
+    },
+    {
+        "name": "Entertainment"
+    },
+    {
+        "name": "Healthcare"
+    },
+    {
+        "name": "Insurance"
+    },
+    {
+        "name": "Personal Spending"
+    },
+    {
+        "name": "Education"
+    },
+    {
+        "name": "Gifts & Donations"
+    },
+    {
+        "name": "Savings & Investments"
+    },
+    {
+        "name": "Travel"
+    },
+    {
+        "name": "Debt Payments"
+    },
+    {
+        "name": "Childcare"
+    },
+    {
+        "name": "Pet Care"
+    },
+    {
+        "name": "Subscriptions"
+    },
+    {
+        "name": "Miscellaneous"
+    },
+    {
+        "name": "Clothing"
+    },
+    {
+        "name": "Household Supplies"
+    },
+    {
+        "name": "Electronics"
+    },
+    {
+        "name": "Books"
+    },
+    {
+        "name": "Hobbies"
+    },
+    {
+        "name": "Fitness"
+    },
+    {
+        "name": "Beauty & Personal Care"
+    },
+    {
+        "name": "Alcohol & Bars"
+    },
+    {
+        "name": "Coffee Shops"
+    },
+    {
+        "name": "Restaurants"
+    },
+    {
+        "name": "Rent"
+    },
+    {
+        "name": "Mortgage"
+    },
+    {
+        "name": "Property Taxes"
+    },
+    {
+        "name": "Home Maintenance"
+    },
+    {
+        "name": "Groceries"
+    },
+    {
+        "name": "Dining Out"
+    },
+    {
+        "name": "Public Transportation"
+    },
+    {
+        "name": "Gas & Fuel"
+    },
+    {
+        "name": "Car Maintenance"
+    },
+    {
+        "name": "Parking"
+    },
+    {
+        "name": "Electricity"
+    },
+    {
+        "name": "Water"
+    },
+    {
+        "name": "Gas"
+    },
+    {
+        "name": "Internet"
+    },
+    {
+        "name": "Cable TV"
+    },
+    {
+        "name": "Phone"
+    },
+    {
+        "name": "Movies & DVDs"
+    },
+    {
+        "name": "Concerts"
+    },
+    {
+        "name": "Sports"
+    },
+    {
+        "name": "Medical Bills"
+    },
+    {
+        "name": "Pharmacy"
+    },
+    {
+        "name": "Health Insurance"
+    },
+    {
+        "name": "Life Insurance"
+    },
+    {
+        "name": "Auto Insurance"
+    },
+    {
+        "name": "Home Insurance"
+    },
+    {
+        "name": "Retirement Savings"
+    },
+    {
+        "name": "Emergency Fund"
+    },
+    {
+        "name": "College Fund"
+    },
+    {
+        "name": "Vacation"
+    },
+    {
+        "name": "Loan Payments"
+    },
+    {
+        "name": "Credit Card Payments"
+    },
+    {
+        "name": "Babysitter"
+    },
+    {
+        "name": "Daycare"
+    },
+    {
+        "name": "Veterinary"
+    },
+    {
+        "name": "Pet Food"
+    },
+    {
+        "name": "Streaming Services"
+    },
+    {
+        "name": "Magazine Subscriptions"
+    },
+    {
+        "name": "Gym Membership"
+    },
+    {
+        "name": "Spa & Massage"
+    },
+    {
+        "name": "Haircuts"
+    },
+    {
+        "name": "Manicures"
+    },
+    {
+        "name": "Dry Cleaning"
+    },
+    {
+        "name": "Laundry"
+    },
+    {
+        "name": "Home Decor"
+    },
+    {
+        "name": "Furniture"
+    },
+    {
+        "name": "Appliances"
+    },
+    {
+        "name": "Tools"
+    },
+    {
+        "name": "Garden Supplies"
+    },
+    {
+        "name": "Office Supplies"
+    },
+    {
+        "name": "Postage"
+    },
+    {
+        "name": "Shipping"
+    },
+    {
+        "name": "Bank Fees"
+    },
+    {
+        "name": "ATM Fees"
+    },
+    {
+        "name": "Service Charges"
+    },
+    {
+        "name": "Financial Advisor"
+    },
+    {
+        "name": "Legal Fees"
+    },
+    {
+        "name": "Accounting Fees"
+    },
+    {
+        "name": "Charity"
+    },
+    {
+        "name": "Gifts"
+    },
+    {
+        "name": "Events"
+    },
+    {
+        "name": "Wedding"
+    },
+    {
+        "name": "Birthday"
+    },
+    {
+        "name": "Anniversary"
+    },
+    {
+        "name": "Holiday"
+    },
+    {
+        "name": "New Year"
+    },
+    {
+        "name": "Christmas"
+    },
+    {
+        "name": "Easter"
+    },
+    {
+        "name": "Halloween"
+    },
+    {
+        "name": "Valentine's Day"
+    },
+    {
+        "name": "Mother's Day"
+    },
+    {
+        "name": "Father's Day"
+    },
+    {
+        "name": "Graduation"
+    },
+    {
+        "name": "Baby Shower"
+    },
+    {
+        "name": "Housewarming"
+    },
+    {
+        "name": "Retirement"
+    },
+    {
+        "name": "Anniversary"
+    },
+    {
+        "name": "Farewell"
+    },
+    {
+        "name": "Get Well"
+    },
+    {
+        "name": "Congratulations"
+    },
+    {
+        "name": "Sympathy"
+    }
+]
