@@ -1,0 +1,68 @@
+/* Filter Section */
+.filter-box {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 15px;
+  flex-wrap: wrap; /* Allow wrapping on larger screens */
+  align-items: center;
+}
+
+.filter-btn {
+  padding: 8px;
+  background-color: #e0e0e0;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 13px;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  min-width: 80px;
+  text-align: center;
+  flex-grow: 1; /* Allow the buttons to grow */
+}
+
+.filter-btn:hover,
+.filter-btn.selected {
+  background-color: #008cba;
+  color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Mobile View - For screens smaller than 480px */
+@media (max-width: 480px) {
+  .filter-box {
+    justify-content: center; /* Center the buttons horizontally */
+    gap: 8px;
+  }
+
+  .filter-btn {
+    flex-grow: 0; /* Disable flex grow to ensure the buttons do not stretch */
+    flex-basis: calc(100% / 4 - 8px); /* Ensure each button takes equal space */
+    max-width: 120px; /* Prevent buttons from being too wide */
+  }
+}
+
+/* Tablet View - For screens between 481px and 768px */
+@media (min-width: 481px) and (max-width: 768px) {
+  .filter-box {
+    justify-content: space-evenly; /* Distribute buttons evenly */
+  }
+
+  .filter-btn {
+    flex-basis: calc(100% / 4 - 8px); /* Ensure buttons take equal space */
+    max-width: 120px;
+  }
+}
+
+/* Desktop View - For screens larger than 768px */
+@media (min-width: 769px) {
+  .filter-box {
+    flex-wrap: nowrap; /* No wrapping, all buttons in one line */
+  }
+
+  .filter-btn {
+    flex-basis: auto;
+    max-width: 120px; /* Ensure buttons don't get too wide */
+  }
+}

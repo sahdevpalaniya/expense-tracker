@@ -3,7 +3,8 @@ import Input from '../components/common/Input';
 import { loginUser } from '../services/authApi';
 import '../assets/styles/Auth.css';
 import { useNavigate } from 'react-router-dom';
-
+import Button from '../components/common/Button';
+ 
 const Login = () => {
     const navigate = useNavigate();
     const [formData, setFormData] = useState({
@@ -40,8 +41,8 @@ const Login = () => {
     };
 
     return (
-        <div className="auth-container">
-            <div className="auth-card">
+        <div className="main-container">
+            <div className="main-card">
                 <h2>Login</h2>
                 <form onSubmit={handleSubmit}>
                     <Input
@@ -60,9 +61,7 @@ const Login = () => {
                         placeholder="Enter password"
                     />
                     {error && <p className="error-message">{error}</p>}
-                    <button type="submit" className="submit-btn" disabled={loading}>
-                        {loading ? 'Logging in...' : 'Login'}
-                    </button>
+                    <Button type="submit" loading={loading} value="Login" />
                 </form>
             </div>
         </div>

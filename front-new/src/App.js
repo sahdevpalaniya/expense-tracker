@@ -6,6 +6,7 @@ import Register from './pages/Register';
 import Headers from './components/common/Header';
 import Dashboard from './containers/Dashboard';
 import './App.css';
+import Expense from './pages/Expense';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -24,6 +25,7 @@ function App() {
       <Headers />
       <Routes>
         <Route path="/" index element={isLoggedIn ? <Dashboard /> : <Login />} />
+        <Route path="/expense" element={<Expense />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/dashboard" element={<Dashboard />} />
