@@ -1,0 +1,64 @@
+.filter-box {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 15px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.filter-btn {
+  padding: 8px;
+  background-color: #e0e0e0;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 13px;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  min-width: 80px;
+  text-align: center;
+  flex-grow: 1;
+}
+
+.filter-btn:hover,
+.filter-btn.selected {
+  background-color: #008cba;
+  color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 480px) {
+  .filter-box {
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .filter-btn {
+    flex-grow: 0;
+    flex-basis: calc(100% / 4 - 8px);
+    max-width: 120px;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  .filter-box {
+    justify-content: space-evenly;
+  }
+
+  .filter-btn {
+    flex-basis: calc(100% / 4 - 8px);
+    max-width: 120px;
+  }
+}
+
+@media (min-width: 769px) {
+  .filter-box {
+    flex-wrap: nowrap;
+  }
+
+  .filter-btn {
+    flex-basis: auto;
+    max-width: 120px;
+  }
+}

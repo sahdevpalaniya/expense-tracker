@@ -1,0 +1,74 @@
+.summary-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.icon-bracket {
+  width: 25px;
+  height: 25px;
+  border: 2px solid #008cba;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #008cba;
+  color: white;
+  font-size: 20px;
+  margin-bottom: 6px;
+}
+
+.summary-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.summary-title {
+  font-size: 13px;
+  color: #666;
+}
+
+.amount {
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.income {
+  color: #4caf50;
+}
+.expense {
+  color: #f44336;
+}
+.remaining {
+  color: #008cba;
+}
+
+@media (max-width: 480px) {
+  .summary-item {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 8px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+  }
+
+  .icon-bracket {
+    width: 30px;
+    height: 30px;
+    font-size: 16px;
+    margin-bottom: 0;
+  }
+
+  .summary-title {
+    font-size: 12px;
+  }
+
+  .amount {
+    font-size: 14px;
+  }
+
+  .expense-item {
+    padding: 8px;
+  }
+}

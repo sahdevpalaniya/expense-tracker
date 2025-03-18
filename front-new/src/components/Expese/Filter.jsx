@@ -1,9 +1,11 @@
-import {React, useState} from 'react';
-import '../../assets/styles/Expense.css';
+import { React, useState } from 'react';
+import './Filter.css';
 
-function Filter() {
-    const [selectedFilter, setSelectedFilter] = useState('All');
-    const handleFilterClick = (filter) => setSelectedFilter(filter);
+function Filter({ selectedFilter, event }) {
+    
+    const handleClick = (filter) => {
+        event(filter);
+    };
 
     return (
         <div className="filter-box">
@@ -11,7 +13,7 @@ function Filter() {
                 <button
                     key={filter}
                     className={`filter-btn ${selectedFilter === filter ? 'selected' : ''}`}
-                    onClick={() => handleFilterClick(filter)}
+                    onClick={() => handleClick(filter)}
                 >
                     {filter}
                 </button>

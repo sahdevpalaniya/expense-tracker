@@ -1,0 +1,29 @@
+.action-btn {
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  font-size: 14px;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.cash-in {
+  background-color: #4caf50;
+}
+
+.cash-in:hover {
+  background-color: #45a049;
+}
+
+.cash-out {
+  background-color: #f44336;
+}
+
+.cash-out:hover {
+  background-color: #e53935;
+}
